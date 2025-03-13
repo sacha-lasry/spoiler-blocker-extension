@@ -1,0 +1,64 @@
+.spoiler-blocked {
+  filter: blur(8px) !important;
+  transition: filter 0.2s ease;
+  position: relative;
+  cursor: pointer;
+  overflow: visible !important;
+}
+
+/* Basic YouTube fixes - ensure thumbnails get blurred properly */
+ytd-thumbnail.spoiler-blocked {
+  position: relative;
+  z-index: 2;
+}
+
+/* Make sure blur gets applied to YouTube thumbnails */
+ytd-thumbnail.spoiler-blocked img,
+ytd-thumbnail.spoiler-blocked yt-image,
+ytd-thumbnail.spoiler-blocked yt-img-shadow {
+  filter: blur(8px) !important;
+}
+
+/* Critical fix: Explicitly prevent affecting non-spoiler thumbnails */
+ytd-thumbnail:not(.spoiler-blocked) {
+  filter: none !important;
+}
+
+/* Make sure only actual spoiler thumbnails get blurred */
+ytd-video-renderer:not(.spoiler-blocked) ytd-thumbnail:not(.spoiler-blocked),
+ytd-grid-video-renderer:not(.spoiler-blocked) ytd-thumbnail:not(.spoiler-blocked),
+ytd-compact-video-renderer:not(.spoiler-blocked) ytd-thumbnail:not(.spoiler-blocked) {
+  filter: none !important;
+}
+
+.spoiler-unblocked {
+  filter: none !important;
+}
+
+/* Initial overlay to prevent content flash */
+.spoiler-initializing-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 2147483647; /* Maximum z-index */
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spoiler-initializing-overlay.hidden {
+  opacity: 0;
+}
+
+.spoiler-initializing-overlay::after {
+  content: "Loading...";
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: #333;
+} 

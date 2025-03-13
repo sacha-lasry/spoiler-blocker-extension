@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spoiler Blocker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Spoiler Blocker</h1>
+    
+    <div class="toggle-container">
+      <label class="switch">
+        <input type="checkbox" id="toggle-extension">
+        <span class="slider round"></span>
+      </label>
+      <span id="status-text">Extension is OFF</span>
+    </div>
+
+    <div class="keywords-container">
+      <h2>Block Keywords</h2>
+      <p class="description">Enter topics you want to avoid spoilers for (TV shows, sports events, etc.)</p>
+      
+      <div class="input-group">
+        <input type="text" id="keyword-input" placeholder="Enter keyword or phrase...">
+        <button id="add-keyword">Add</button>
+      </div>
+      
+      <div class="keywords-list-container">
+        <ul id="keywords-list"></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <button id="save-settings">Save Settings</button>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html> 
